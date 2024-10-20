@@ -178,10 +178,12 @@ module CS
         lookup.each do |old_value, new_value|
           if new_value.nil? || self.blank?(new_value)
             @cities[country][state].delete(old_value)
+          elsif @cities[country][state].blank?
+            @cities[country][state] = [ new_value ]
           else
             index = @cities[country][state].index(old_value)
             if index.nil?
-              @cities[country][state][] = new_value
+              @cities[country][state] << new_value
             else
               @cities[country][state][index] = new_value
             end
