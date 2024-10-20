@@ -172,6 +172,8 @@ module CS
         @cities[country][key] = value.uniq || []
       end
 
+      pp @cities
+
       # Process lookup table
       lookup = get_cities_lookup(country, state)
       if ! lookup.nil?
